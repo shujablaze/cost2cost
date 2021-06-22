@@ -1,0 +1,51 @@
+.navlink{
+    font-size: 1.8rem;
+    text-transform: uppercase;
+
+    &__tag{
+        display:block;
+        color:rgb(219, 218, 218);
+        text-decoration: none;
+        padding:1rem 2rem;
+        cursor: pointer;
+        transition: color 200ms ease;
+        width:100%;
+    
+    @media only screen and (min-width:$smalltab-brk){
+        &:hover{
+            color:lighten(rgb(231, 231, 231) , 20)
+        }
+        &:active{
+            color:lighten(rgb(231, 231, 231) , 10)
+        }
+    }
+    }
+
+    @media only screen and (max-width:$smalltab-brk){
+        display: none;
+        font-size: 15px;
+    }
+
+
+}
+a{
+    text-decoration: none;
+}
+
+
+.btn-blk a{
+    color:rgb(240, 239, 239);
+    height:100%;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.7rem;
+    @media only screen and (max-width:$smalltab-brk){
+        font-size: 90%;
+    }
+    z-index: 9;
+}
+

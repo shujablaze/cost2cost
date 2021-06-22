@@ -1,0 +1,16 @@
+extends base
+
+block content 
+    h4=`${category}`
+    section.shelves 
+        each product in data
+            a.shelves_link(href=`/categories/${category}/${product._id}`)
+                .product
+                    .product__img
+                        img(src=`/img/${product.img}`)
+                    .product__title=`${product.title}`
+                    .price-bar 
+                        .discounted=`Rs. ${product.discountprice}`
+                        .originalprice=`Rs ${product.originalprice}`
+                        .discperc=Math.floor((product.originalprice-product.discountprice)/product.originalprice*100)+"% off"
+

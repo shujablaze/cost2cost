@@ -1,0 +1,125 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(href='https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap' rel='stylesheet')
+    link(rel='icon' href='/icons/logo.png' type='image/gif' sizes='32x32')
+    link(href='https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css2?family=Monofett&display=swap' rel='stylesheet')
+    link(href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet")
+    link(rel='stylesheet' href='/css/style.css')
+    title Cost2Cost | #{title}
+
+body 
+  .container
+    include _navbar
+    section.header
+      .banner
+        picture
+          source(media='(max-width:780px)' srcset='img/banner2-sm.jpg')
+          source(media='(min-width:3840px)' srcset='img/banner2-biggest.jpg')
+          img(src='img/banner2.jpg' alt='banner')
+        .banner__text
+          | Upgrade Your At-Home Setup To Work And Play From Home
+    section.trending
+      .main-heading
+        //
+          <div class="heading-back">
+          <img src="img/background-heading.jpg" alt="back">
+          </div>
+        h1 Pre-Built Systems
+      .pc-extreme
+        .pc-picture
+          img(src='img/enthu.png' alt='pc-pic')
+        .pc-text
+          h2 extreme
+          h3 Rs.2,30,000
+          ul
+            li AMD Ryzen 9 3950X (16C, 32T)
+            li AMD X570 Chipset Full ATX
+            li 16 GB*2 3200 MHz DDR4 RAM.
+            li Nvidia Geforce RTX 3090 24 GB
+          .btn-blk.tr-btn
+            a(href='/extreme') Learn More
+      .pc-mid
+        .pc-picture
+          img(src='img/high.jpg' alt='pc-pic')
+        .pc-text
+          h2 vybe
+          h3 Rs.1,40,000
+          ul
+            li AMD Ryzen 7 5800X (8C, 16 T)
+            li AMD B550 Chipset Full ATX 
+            li 8 GB*2 3000 MHz DDR4 RAM
+            li Nvidia Geforce RTX 3070 8 GB
+          .btn-blk.tr-btn
+            a(href='/vybe') Learn More
+      .pc-entry
+        .pc-picture
+          img(src='img/med-end.png' alt='pc-pic')
+        .pc-text
+          h2 chronos
+          h3 Rs.80,000
+          ul
+            li AMD Ryzen 5 3600 (6C, 12Th)
+            li AMD B450 Chipset Full ATX 
+            li 8 GB 3000 MHz DDR4 RAM
+            li Nvidia Geforce GTX 1660 Super 
+          .btn-blk.tr-btn
+            a(href='/chronos') Learn More
+      .pc-regular
+        .pc-picture
+          img(src='img/office.jpg' alt='pc-pic')
+        .pc-text
+          h2 faithful
+          h3 Rs.31,000
+          ul
+            li Intel&reg; Core&trade; i3-10100 processor
+            li Gigabyte H410M H Motherboard
+            li 8 GB 2666 MHz DDR4 RAM
+            li Nvidia GeForce GTX 1050 2Gb 
+          .btn-blk.tr-btn
+            a(href='/faithful') Learn More
+    section.categories
+      .catg.cat-1
+        a(href='#')
+          .cat-img
+            img(src='icons/settings.png' alt='setting')
+          h4 Build your own
+      .catg.cat-2
+        a(href='/categories/gamingchairs')
+          .cat-img
+            img(src='icons/gaming-chair.jpg' alt='chair')
+          h4 Gaming chairs
+      .catg.cat-3
+        a(href='/categories/cpu')
+          .cat-img
+            img(src='icons/cpu.png' alt='cpu')
+          h4 CPUs
+      .catg.cat-4
+        a(href='/categories/gpu')
+          .cat-img
+            img(src='icons/gpu.png' alt='gpu')
+          h4 GPUs
+    section.support
+      .support-text
+        h1 QUALITY &amp; SUPPORT
+        p
+          | To enhance your ownership experience, our systems go through rigorous testing procedures.
+          | Further sweetening the deal, we also provide unmatched hassle-free support options.
+      .sup-card.sup1
+        img(src='icons/check.svg' alt='check')
+        p 80+ Quality Check
+      .sup-card.sup2
+        img(src='icons/location.svg' alt='location')
+        p 3 Year Onsite Warranty
+      .sup-card.sup3
+        img(src='icons/technical-support.svg' alt='tech-s')
+        p Lifetime Technical Support
+      .sup-card.sup4
+        img(src='icons/clock.svg' alt='clk')
+        p 24 Hour Burn-In-Test
+    include _footer
+
+<script src="/js/ham-menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>

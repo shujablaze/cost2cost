@@ -1,0 +1,81 @@
+.product{
+    &-card{
+        display:grid;
+        grid-template-columns: 40% 40%;
+        align-items: center;
+        column-gap: 10%;
+        padding-bottom: 7vh;
+        padding-top: 2vh;
+        @media only screen and (max-width:$smalltab-brk){
+        grid-template-columns: 100%;
+        row-gap: 5vh;
+        column-gap: 0;
+        }
+    }
+    &__image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        img{
+            //width:70%;
+            height:45rem
+        }
+    }
+
+    &__heading{
+        font-size: 3rem;
+        font-weight: 600;
+    }
+    &__stock{
+        font-size: 2rem;
+        color:rgb(122, 179, 65);
+        padding:1rem;
+    }
+    &__text{
+        font-size:2.1rem;
+    }
+    &__price{
+        margin:2.5rem 0;
+        padding:1rem;
+        display:flex; 
+    }
+    &__assurance{
+        list-style-type: none;
+        display: flex;
+        margin: 1.5rem 0;
+        height:6.5rem;
+        img{
+            height:100%;
+            display:block;
+            margin:0 auto;
+        }
+    }
+    &__btn{
+        padding:1rem;
+        font-size: 1.5rem;
+        color:#fff
+    }
+    &__info{
+        font-size: 2rem;
+        padding:1rem;
+        margin-bottom: 3rem;
+    }
+}
+
+.assurance{
+    &__item{
+        padding:1rem 2rem;
+        margin-right: 4rem;
+    }
+    &__text{
+        font-size: 1.3rem;
+    }
+}
+
+.crossed{
+    color:rgb(110, 110, 110);
+    text-decoration: line-through;
+    margin-right: 1.5rem;
+}
+

@@ -1,0 +1,36 @@
+.footer{
+    padding:2vh;
+    background:#222222;
+    display: grid;
+    color:#e3e3e3;
+    font-size: 2rem;
+    @media only screen and (max-width: $bigphn-brk){
+        font-size:1.5rem;
+    }
+    justify-items: center;
+    align-items: center;
+    row-gap: 1vw;
+
+    grid-template-rows:repeat(3,minmax(min-content,5vh));
+
+    img{
+        display: inline-block;
+        height:3rem;
+    }
+}
+
+.contacts{
+    width:50vw;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.Whatsapp{
+    display:flex;
+    align-items: center;
+    
+    span{
+        margin-left:1rem;
+    }
+}

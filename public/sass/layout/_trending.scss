@@ -1,0 +1,130 @@
+.trending{
+    display:grid;
+    grid-template-columns:1fr [start]minmax(min-content,47vw)[mid] minmax(min-content,47vw)[end] 1fr;
+    grid-template-rows: 13rem [top]min-content[med] min-content[bottom];
+
+    justify-items: center;
+    align-items: center;
+
+    @media only screen and (max-width:$smalltab-brk){
+        grid-template-columns: 1fr;
+        grid-template-rows: 13rem [top] min-content [med] min-content[lw] min-content[hw] min-content [bottom];
+    }
+}
+
+.pc-extreme,.pc-mid,.pc-regular,.pc-entry{
+    display:flex;
+    align-items: center;
+    width:100%;
+    /*justify-content: space-evenly;*/
+    padding:12% 0;
+    
+    @media only screen and (max-width:$smalltab-brk){
+        flex-direction:column;
+        padding:6% 0;
+    }
+}
+
+
+
+.pc-extreme{
+    background:#e3e3e3;
+    grid-column: start/mid;
+    grid-row: top/med;
+
+}
+
+.pc-mid{
+    background:lighten(#e3e3e3,10);
+    grid-column: mid/end;
+    grid-row: top/med;
+    @media only screen and (max-width:$smalltab-brk){
+        background: transparent; 
+        grid-column: start/mid;
+        grid-row: med/lw; 
+    }
+}
+
+
+.pc-entry{
+    background:lighten(#e3e3e3,10);
+    grid-column: start/mid;
+    grid-row: med/bottom;
+    @media only screen and (max-width:$smalltab-brk){
+        background: #e3e3e3;
+        grid-column: start/mid;
+        grid-row: lw/hw; 
+    }
+
+}
+
+.pc-regular{
+    background:#e3e3e3;
+    grid-column: mid/end;
+    grid-row: med/bottom;
+    @media only screen and (max-width:$smalltab-brk){
+        background: transparent;
+        grid-column: start/mid;
+        grid-row: hw/bottom; ; 
+    }
+}
+
+.pc-picture{
+    width:50%;
+    text-align: center; 
+    
+    img{
+    max-width: 90%;;
+    }
+        @media only screen and (max-width:$smalltab-brk){
+        width: 100%;
+        text-align: center; 
+         img {
+          max-width: 60%;
+         } 
+    }
+}
+
+.main-heading{
+    grid-column: start/end;
+    position: relative;
+    margin-top: 1rem;
+    width:100%;
+    align-self: start;
+    background:#333;
+    z-index: 5; 
+    text-align: center;
+
+}
+
+.pc-text{
+    display: grid;
+    grid-template-rows: min-content 1fr 2fr 1fr;
+    row-gap: 1rem;
+}
+
+.tr-btn{
+    align-self: center;
+    justify-self: end;
+}
+
+
+
+/*.main-heading h1{
+    transform: translate(9%,33%);
+    position: relative;
+}*/
+
+/*.heading-back{
+    position:absolute;
+    top:-40%;
+    left:0;
+    z-index: 1;
+    & img{
+        width:115%;
+        height:50%;
+    }
+}*/
+
+
+

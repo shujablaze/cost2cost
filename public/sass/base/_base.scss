@@ -1,0 +1,47 @@
+*,
+*::after,
+*::before{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: "lato",sans-serif;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    overflow-x: hidden;
+    
+    @media only screen and (min-width:240em)
+    {
+      font-size:140%;
+    }
+
+    @media only screen and (max-width: 65.625em){
+      font-size:58%;
+    }
+    
+    @media only screen and (max-width: 37.5em){
+      font-size:45%;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+
+  ::-webkit-scrollbar-track {
+    background: #919191;
+  }
+  
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(206, 116, 13);
+  }
+
+  .display{
+  display: block !important;
+  animation: drag 500ms linear;
+}

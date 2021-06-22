@@ -1,0 +1,7 @@
+.container{
+    display:grid;
+
+    grid-template-rows:minmax(min-content,42vw) repeat(3,min-content);
+    row-gap: 6vw;
+    min-height: 100vh;
+}

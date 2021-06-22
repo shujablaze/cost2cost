@@ -1,0 +1,27 @@
+extends base
+
+block content 
+    .container--signup
+        h4 SIGN UP 
+        form(method="POST" id="signup-form")
+            .form__field
+                label.form__label(for="name" ) Name 
+                input.input__field(type="text" name="name" id="name" placeholder="Name" required)
+            .form__field
+                label.form__label(for="email") Email 
+                input.input__field(type="email" name="email" id="email" placeholder="Email" required) 
+            .form__field
+                label.form__label(for="password") Password 
+                input.input__field(type="password" name="password" id="password" required)
+            .form__field
+                label.form__label(for="passwordConfirm") Confirm Password 
+                input.input__field(type="password" name="passwordConfirm" id="passwordConfirm" required)
+            .error__response
+            .form__field 
+                input.submit__button(type="submit" value="Sign up") 
+            
+            .form__bottom 
+                | Already a user? 
+                a(href="/users/login") Login
+
+    <script src="/js/signup.js"></script>

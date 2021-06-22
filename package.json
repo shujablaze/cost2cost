@@ -1,0 +1,27 @@
+{
+  "name": "cost2cost",
+  "version": "1.0.0",
+  "description": "website for sales",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass public/sass/main.scss public/css/style.css -w",
+    "start:dev":"set NODE_ENV=DEV && supervisor server.js",
+    "start:prod":"set NODE_ENV=PROD && supervisor server.js"
+  },
+  "author": "shujahamid",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^5.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.15",
+    "pug": "^3.0.2",
+    "validator": "^13.6.0"
+  }
+}

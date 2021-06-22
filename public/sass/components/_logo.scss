@@ -1,0 +1,20 @@
+.logo{
+    background:#222;
+    font-family: "monofett";
+    height:5rem;
+    color:$primary-color;
+    font-size:3.5rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+
+    @media only screen and (max-width:$smalltab-brk){
+        
+        justify-self: start;
+        height: 40px;
+        font-size: 30px;
+        margin-top: 4px;
+        margin-left: 8px;
+    }
+}
+
+

@@ -1,0 +1,41 @@
+.btn-blk{
+    display:flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    background:rgb(192, 29, 29) /*lighten($primary-color,5)*/;
+    height:3.5rem;
+    width:12rem;
+    @media only screen and (max-width:$smalltab-brk){
+        height:5rem;
+        width:20rem;
+    }
+    cursor: pointer;
+    
+    &::before{
+        content:'';
+        position: absolute;
+        border:3px dotted rgb(192, 29, 29);
+        z-index: -1;
+        top:0px;
+        right:0;
+        left:0;
+        bottom:0;
+        transition: top, bottom, left, right,transform, 170ms ease-in-out;
+    }
+    
+    &:hover{
+        transform: translateY(-2px);
+        &::before{
+            z-index: 1;
+            top:-5px;
+            right:-5px;
+            left:-5px;
+            bottom:-5px;
+        }
+    }
+    &:active{
+        transform: translateY(-1px);
+    }
+}
+

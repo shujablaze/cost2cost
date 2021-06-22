@@ -1,0 +1,41 @@
+extends base
+
+block content
+    .product-card
+        .product__image
+          img(src=`/img/${data.img}`)
+        .product__details
+          .product__field 
+            .product__heading=data.title
+  
+          .product__field 
+            .product__stock In Stock
+
+          .product__field 
+            ul.product__assurance
+              li.assurance__item 
+                img(src="/icons/cod.png")
+                .assurance__text Cash on Delivery
+              li.assurance__item 
+                img(src="/icons/replacement.png")
+                .assurance__text 7 Day Replacement
+              li.assurance__item 
+                img(src="/icons/warranty.png")
+                .assurance__text 1 Year Warranty
+          .product__field.product__price 
+            .product__text.crossed=`Rs. ${data.originalprice}`
+            .product__text=`Rs. ${data.discountprice}`
+            .product__text.discperc=Math.floor((data.originalprice-data.discountprice)/data.originalprice*100)+"% off"
+          .product__btn
+            .btn-blk Add To Cart
+              
+                
+        
+    .product__info 
+      .heading-3 Description     
+      .product__description=data.description
+
+    .product__info
+      .heading-3 Features
+      .product__features=data.features
+    

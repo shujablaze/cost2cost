@@ -1,0 +1,38 @@
+extends base
+
+block content 
+    h4=`${data.name}`
+    p=`${data.description}`
+    .pc-card
+        .pcdetails__image
+            img(src=`img/${data.img}`)
+        .pcdetails__text 
+            .pcdetails__text-field.pcdetails__text--highlight 
+                .pcdetails__text-field--title Processor 
+                .pcdetails__text-field--value=`${data.processor}`
+            .pcdetails__text-field 
+                .pcdetails__text-field--title Graphics
+                .pcdetails__text-field--value=`${data.gpu}`
+            .pcdetails__text-field.pcdetails__text--highlight  
+                .pcdetails__text-field--title RAM 
+                .pcdetails__text-field--value=`${data.ram}`
+            .pcdetails__text-field 
+                .pcdetails__text-field--title Motherboard 
+                .pcdetails__text-field--value=`${data.motherboard}`
+            .pcdetails__text-field.pcdetails__text--highlight  
+                .pcdetails__text-field--title Storage
+                .pcdetails__text-field--value=`${data.storage}`
+            .pcdetails__text-field 
+                .pcdetails__text-field--title PSU 
+                .pcdetails__text-field--value=`${data.powersupply}`
+            .pcdetails__text-field.pcdetails__text--highlight  
+                .pcdetails__text-field--title Dimensions
+                .pcdetails__text-field--value=`${data.dimensions}`
+            .pcdetails__text-field.pcdetails__price 
+                .pcdetails__text-field--title BUY NOW
+            
+                .btn-blk 
+                    a=`+ Rs. ${data.price}`
+                
+            
+        
