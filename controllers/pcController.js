@@ -1,5 +1,6 @@
 const getpcdata = require('../models/Pc');
 
+
 exports.getpc = async (req,res)=>{
     const data = await getpcdata(req.params.name);
     if(data)

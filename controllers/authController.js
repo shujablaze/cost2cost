@@ -73,8 +73,9 @@ exports.checkLoginStatus = async (req,res,next)=>{
 
             if(!user) return next()
 
-            res.locals.loggedIn=true
-            res.locals.username=user.name.split(' ')[0]
+            res.locals.loggedIn = true
+            res.locals.userId = decoded.id
+            res.locals.username = user.name.split(' ')[0]
         }
         catch{
             return next();

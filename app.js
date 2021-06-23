@@ -6,6 +6,7 @@ const pcController=require('./controllers/pcController');
 const shelvesController=require('./controllers/shelvesController');
 const {checkLoginStatus,protectedRoute}=require('./controllers/authController');
 const userRouter=require('./routes/userRoutes');
+const cartRouter=require('./routes/cartRoutes');
 const app = express();
 
 // Parse req body to json 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname,'/public')));
 app.use(checkLoginStatus);
 
 app.use('/users',userRouter);
+app.use('/cart',cartRouter);
 
 app.get('/',(req,res)=>res.render('index'))
 

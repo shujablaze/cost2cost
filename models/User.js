@@ -29,7 +29,16 @@ const userSchema = new mongoose.Schema({
             },
             message:'Passwords does not match'
         }
-    }
+    },
+    cart:[{
+            productId:mongoose.Schema.ObjectId,
+            category:String,
+            quantity:Number
+        }]
+},
+{
+    toObject:{virtauls:true},
+    toJSON:{virtauls:true}
 })
 
 userSchema.pre('save', async function(next){
@@ -38,8 +47,10 @@ userSchema.pre('save', async function(next){
     this.passwordConfirm = undefined
     next()
 })
+
 //Create models after instance methods and querymiddlewares
 const User = mongoose.model('User',userSchema)
+
 
 module.exports = User
 
