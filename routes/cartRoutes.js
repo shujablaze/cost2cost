@@ -5,8 +5,9 @@ const router = express.Router()
 
 router
     .route('/')
-    .get(cartController.updateCart)
+    .get(cartController.displayCart)
     .post(cartController.updateCart)
-
+    .patch(cartController.updateQuantity)
+    .delete(cartController.deleteCartItem)
 
 module.exports = router

@@ -36,3 +36,23 @@ exports.getProducts=async (req,res)=>{
         data:data[0]
     }) 
 }
+
+exports.getItem = async (category,id)=>{
+
+    let data=undefined
+
+    if(category === "gamingchairs")
+    data = await Products.getchairdata(id);
+    else if(category === "cpu")
+    data = await Products.getCpuData(id);
+    else if(category === "gpu")
+    data = await Products.getGpuData(id);
+    else if (category === "ram")
+    data = await Products.getRamData(id);
+    else if (category === "motherboard")
+    data = await Products.getMotherboardData(id);
+    else if (category === "accessories")
+    data = await Products.getAccessoriesData(id)
+
+    return data[0]
+}

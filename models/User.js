@@ -31,9 +31,13 @@ const userSchema = new mongoose.Schema({
         }
     },
     cart:[{
-            productId:mongoose.Schema.ObjectId,
+            _id:false,
+            productId:{
+                type:mongoose.Schema.ObjectId,
+                unique:true
+            },
             category:String,
-            quantity:Number
+            quantity:Number,
         }]
 },
 {
