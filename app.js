@@ -3,7 +3,7 @@ const path = require('path');
 const cookieParser=require('cookie-parser')
 
 const pcController=require('./controllers/pcController');
-const shelvesController=require('./controllers/shelvesController');
+const productController=require('./controllers/productController');
 const {checkLoginStatus,protectedRoute}=require('./controllers/authController');
 const userRouter=require('./routes/userRoutes');
 const cartRouter=require('./routes/cartRoutes');
@@ -30,9 +30,9 @@ app.use('/cart',cartRouter);
 
 app.get('/',(req,res)=>res.render('index'))
 
-app.get('/categories/:category',shelvesController.getProducts);
+app.get('/categories/:category',productController.getProducts);
 
-app.get('/categories/:category/:id',shelvesController.getProducts);
+app.get('/categories/:category/:id',productController.getProducts);
 
 app.get('/:name',protectedRoute,pcController.getpc);
 

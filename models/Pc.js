@@ -1,8 +1,8 @@
 const mongoose=require('mongoose')
 
 const pcSchema = new mongoose.Schema({
-    name: String,
-    price: Number,
+    title: String,
+    discountprice: Number,
     processor: String,
     storage:String,
     gpu: String,
@@ -15,9 +15,8 @@ const pcSchema = new mongoose.Schema({
 });
 const Pc = mongoose.model('Pc',pcSchema,'pc');
 
-const getpcdata = async (pcname)=>{
-    const data = await Pc.findOne({name:`${pcname}`});
-    return data;
-}
 
-module.exports = getpcdata;
+
+
+
+module.exports = Pc;

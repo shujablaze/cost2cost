@@ -1,8 +1,8 @@
 const User = require('../models/User');
-const { getItem } = require('./shelvesController') 
+const { getItem } = require('./productController') 
 
 exports.updateCart = async (req,res)=>{
-    
+
     const {productId,productCategory} = req.body
     
     const allowedCategories = ['gamingchairs','cpu','ram','gpu','motherboard','pc','accessories']
@@ -34,13 +34,12 @@ exports.updateCart = async (req,res)=>{
 exports.displayCart = async (req,res)=>{
 
     const user = await User.findById(res.locals.userId)
-
     if(user){
         let data = user.cart.map(async (item)=>{
 
-            const { productid,category,quantity } = item
+            const { productId,category,quantity } = item
 
-            const { _id,title,img,discountprice } = await getItem(category,productid);
+            const { _id, title, img, discountprice } = await getItem(category,productId);
 
             const price = Math.round(discountprice * quantity * 100)/100
             
@@ -81,7 +80,7 @@ exports.deleteCartItem=async (req,res)=>{
     let {productId} = req.body
 
     try{
-        await User.findOneAndUpdate({_id:res.locals.userId},{$pull:{cart:{productId:productId}}},{safe:true,multi:true})
+        await User.findOneAndUpdate({ _id:res.locals.userId },{ $pull: { cart: { productId:productId } } }, { safe:true,multi:true })
         res.status('200').json({
             status:'success'
         })

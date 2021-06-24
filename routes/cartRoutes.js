@@ -10,4 +10,7 @@ router
     .patch(cartController.updateQuantity)
     .delete(cartController.deleteCartItem)
 
+router
+    .route('/checkout')
+    
 module.exports = router

@@ -1,7 +1,7 @@
 extends base
 
 block content 
-    h4=`${data.name}`
+    h4=`${data.title}`
     p=`${data.description}`
     .pc-card
         .pcdetails__image
@@ -32,7 +32,7 @@ block content
                 .pcdetails__text-field--title BUY NOW
             
                 .btn-blk 
-                    a=`+ Rs. ${data.price}`
+                    a=`+ Rs. ${data.discountprice}`
                 
             
         
