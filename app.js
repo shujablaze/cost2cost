@@ -10,7 +10,8 @@ const cartRouter=require('./routes/cartRoutes');
 const app = express();
 
 // Parse req body to json 
-app.use(express.json());
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 // To send and read cookies
 app.use(cookieParser())
@@ -26,7 +27,7 @@ app.use(express.static(path.join(__dirname,'/public')));
 app.use(checkLoginStatus);
 
 app.use('/users',userRouter);
-app.use('/cart',cartRouter);
+app.use('/cart',protectedRoute,cartRouter);
 
 app.get('/',(req,res)=>res.render('index'))
 
@@ -34,7 +35,7 @@ app.get('/categories/:category',productController.getProducts);
 
 app.get('/categories/:category/:id',productController.getProducts);
 
-app.get('/:name',protectedRoute,pcController.getpc);
+app.get('/:name',pcController.getpc);
 
 module.exports = app;
 

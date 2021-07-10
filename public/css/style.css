@@ -615,6 +615,14 @@ a {
   margin: 1rem 0;
   padding: 1rem; }
 
+.product__form{
+  position: relative;
+  transform: translate(0,0);
+  left:0;
+  top:0;
+  width:auto;
+}
+
 .price-bar {
   padding: 1rem;
   margin-top: 2rem; }

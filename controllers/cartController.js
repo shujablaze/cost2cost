@@ -12,7 +12,7 @@ exports.updateCart = async (req,res)=>{
         return
     }
 
-    const cartItem = {productId:productId,category:productCategory,quantity:1}
+    const cartItem = { productId:productId,category:productCategory,quantity:1 }
 
     const userId = res.locals.userId
 
@@ -25,10 +25,7 @@ exports.updateCart = async (req,res)=>{
 
     const user = await User.findOneAndUpdate({_id:userId},{$addToSet:{cart:cartItem}},{new:true})
 
-    res.status('200').json({
-        status:'success',
-        user
-    })
+    res.redirect('/cart')
 }
 
 exports.displayCart = async (req,res)=>{
@@ -50,10 +47,7 @@ exports.displayCart = async (req,res)=>{
 
         data = await Promise.all(data)
 
-        res.status('200').json({
-            status:'success',
-            data:data
-        })
+        res.render('cart',{data})
     }
 }
 
@@ -68,6 +62,7 @@ exports.updateQuantity = async(req,res)=>{
             })          
         }else{
             console.log('Invalid Quantity')
+            return
         }
     }catch{
         res.status('500').json({

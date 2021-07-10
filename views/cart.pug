@@ -1,0 +1,8 @@
+extends base
+
+block content 
+    each product in data 
+        .cart__item 
+            .cart__item--title=`${product.title}`
+            .cart__item--quantity=`${product.quantity}`
+            .cart__item--price=`${product.price}`

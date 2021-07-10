@@ -10,9 +10,9 @@ const productSchema = new mongoose.Schema({
 });
 
 const Chair = mongoose.model('Chair',productSchema,'gamingchairs');
-const Ram = mongoose.model('Ram',productSchema,'ram');
-const Cpu = mongoose.model('Cpu',productSchema,'cpu');
-const Gpu = mongoose.model('Ram',productSchema,'gpu');
+const Ram   = mongoose.model('Ram',productSchema,'ram');
+const Cpu   = mongoose.model('Cpu',productSchema,'cpu');
+const Gpu   = mongoose.model('Ram',productSchema,'gpu');
 const Motherboard = mongoose.model('Motherboard',productSchema,'motherboard');
 const Accessories = mongoose.model('Ram',productSchema,'accessories');
 
@@ -26,6 +26,7 @@ exports.getCpuData = async (products)=>{
     const data = await Cpu.find(products);
     return data;
 }
+
 exports.getGpuData = async (products)=>{
     const data = await Gpu.find(products);
     return data;

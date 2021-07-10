@@ -26,8 +26,11 @@ block content
             .product__text.crossed=`Rs. ${data.originalprice}`
             .product__text=`Rs. ${data.discountprice}`
             .product__text.discperc=Math.floor((data.originalprice-data.discountprice)/data.originalprice*100)+"% off"
-          .product__btn
-            .btn-blk Add To Cart
+          .product__field
+            form.product__form(action="/cart",method="POST")
+              input(type="hidden", name="productCategory",value=`${category}`)
+              input(type="hidden", name="productId", value=`${data._id}`)
+              input.product__btn.btn-blk(type="submit", value=" Add To Cart")
               
                 
         
