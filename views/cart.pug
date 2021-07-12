@@ -1,8 +1,35 @@
 extends base
 
-block content 
-    each product in data 
-        .cart__item 
-            .cart__item--title=`${product.title}`
-            .cart__item--quantity=`${product.quantity}`
-            .cart__item--price=`${product.price}`
+block content
+    
+    .cart__container
+        .cart__items
+            each product in data 
+                .cart__item 
+                    img.cart__item--img(src=`img/${product.img}`,alt=`${product.title}`)
+                    .cart__item--title=`${product.title}`
+                    input.cart__item--quantity(type="number", name="quantity" value=`${product.quantity}` max=9,min=1)
+                    .cart__item--price=`Rs. ${product.price}`
+                    button.cart__item--delete(value="Delete") Remove
+
+        - let total=0
+        -
+            data.forEach(item=>{
+                total+=item.price
+            })
+
+        .cart__billing-bar 
+            .bill__row
+                .bill__buyer--title Name 
+                .bill__buyer--name=username 
+            .bill__row 
+                .bill__buyer--title Phone 
+                .bill__buyer--phone=9871653258
+            .bill__row 
+                .bill__buyer--title Address 
+                .bill__buyer--address Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quibusdam, ipsam vitae at fugiat explicabo impedit aperiam voluptatum consequatur dolorem.
+            .bill__row.bill__total 
+                .bill__buyer--title Total 
+                .bill__buyer--total=`Rs. ${total}`
+            .buyer_Btn 
+                Button.bill__buyer--btn Order

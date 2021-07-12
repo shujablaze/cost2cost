@@ -1,0 +1,83 @@
+.cart__container{
+    display:grid;
+    grid-template-columns: minmax(min-content,60%) minmax(min-content,35%);
+    column-gap: 5vw;
+    max-width:100vw;
+    padding:3rem;
+    @media only screen and (max-width:$smalltab-brk){
+        display:block;
+    }
+}
+
+
+.cart__item{
+    display: grid;
+    grid-template-columns: 20% 40% 8% 8% 8%;
+    column-gap: 2rem;
+    font-size: 1.4rem;
+    height:7vh;
+    padding-bottom: 1rem;
+    width:100%;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(66, 66, 66, 0.2);
+    
+    &--img{
+        height:6vh;
+        justify-self: center;
+    }
+
+    &--quantity{
+        outline:none;
+        border:$primary-color 1px solid;
+        height:50%;
+        text-align: center;
+    }
+    &--delete{
+        cursor:pointer;
+        justify-self: end;
+        background: rgb(170, 51, 51);
+        border: none;
+        padding:0.5rem;
+        border-radius: 3px;;
+        color:white
+    }
+
+}
+
+.cart__billing-bar{
+    align-self: start;
+    border: 1px solid rgb(122, 122, 122);
+    padding:2rem;
+    font-size: 1.5rem;
+}
+
+.bill__row{
+    display: flex;
+    padding:1rem;
+    width:100%;
+}
+
+.bill__buyer{
+    &--title{
+        margin-right: 3rem;
+        width:10%;
+    }
+    &--btn{
+        padding:1rem 4rem;
+        text-transform: uppercase;
+        border:none;
+        border-radius: 3px;
+        font-size: 2rem;
+        color:#eee;
+        background: $primary-color;
+        cursor: pointer;
+        justify-self: center;
+    }
+}
+.buyer_Btn{
+    text-align: center;
+    padding-top: 3rem;
+}
+
+
