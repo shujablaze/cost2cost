@@ -2,6 +2,10 @@
     font-size: 1.8rem;
     text-transform: uppercase;
 
+    @media only screen and (max-width:$bigtab-br){
+        font-size: 1.4rem;
+    }
+
     &__tag{
         display:block;
         color:rgb(219, 218, 218);

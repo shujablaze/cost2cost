@@ -396,15 +396,15 @@ h4 {
   background: linear-gradient(white, #e3e3e3); }
 
 .footer {
-  padding: 2vh;
+  padding: 1vh;
   background: #222222;
   display: grid;
   color: #e3e3e3;
-  font-size: 2rem;
+  font-size: 1.7rem;
   justify-items: center;
   align-items: center;
-  row-gap: 1vw;
-  grid-template-rows: repeat(3, minmax(min-content, 5vh)); }
+  row-gap: 0.5vw;
+  grid-template-rows: repeat(3, minmax(min-content, 3vh)); }
   @media only screen and (max-width: 37.5em) {
     .footer {
       font-size: 1.5rem; } }
@@ -443,6 +443,9 @@ h4 {
 .navlink {
   font-size: 1.8rem;
   text-transform: uppercase; }
+  @media only screen and (max-width: 65.625em) {
+    .navlink {
+      font-size: 1.4rem; } }
   .navlink__tag {
     display: block;
     color: #dbdada;
@@ -811,7 +814,8 @@ form {
   align-self: start;
   border: 1px solid #7a7a7a;
   padding: 2rem;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  border-radius: 3px; }
 
 .bill__row {
   display: flex;

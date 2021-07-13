@@ -1,17 +1,17 @@
 .footer{
-    padding:2vh;
+    padding:1vh;
     background:#222222;
     display: grid;
     color:#e3e3e3;
-    font-size: 2rem;
+    font-size: 1.7rem;
     @media only screen and (max-width: $bigphn-brk){
         font-size:1.5rem;
     }
     justify-items: center;
     align-items: center;
-    row-gap: 1vw;
+    row-gap: 0.5vw;
 
-    grid-template-rows:repeat(3,minmax(min-content,5vh));
+    grid-template-rows:repeat(3,minmax(min-content,3vh));
 
     img{
         display: inline-block;
