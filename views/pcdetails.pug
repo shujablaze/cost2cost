@@ -31,8 +31,10 @@ block content
             .pcdetails__text-field.pcdetails__price 
                 .pcdetails__text-field--title BUY NOW
             
-                .btn-blk 
-                    a=`+ Rs. ${data.discountprice}`
+                form.product__form(action="/cart",method="POST")
+                    input(type="hidden", name="productCategory",value="pc")
+                    input(type="hidden", name="productId", value=`${data._id}`)
+                    input.product__btn.btn-blk(type="submit", value=`+ ${data.discountprice}`)
                 
             
         
