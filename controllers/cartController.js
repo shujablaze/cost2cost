@@ -53,7 +53,7 @@ exports.displayCart = async (req,res)=>{
 
 exports.updateQuantity = async(req,res)=>{
     const {productId,quantity} = req.body
-    console.log(productId,quantity)
+
     try{
         if(quantity > 0 && quantity < 10){
             const data = await User.updateOne({_id:res.locals.userId,'cart.productId':productId},{$set:{'cart.$.quantity':quantity}})
@@ -62,8 +62,10 @@ exports.updateQuantity = async(req,res)=>{
                 status:'ok'
             })        
         }else{
-            console.log('Invalid Quantity')
-            return
+            res.status('400').json({
+                status:'fail',
+                message:"Invalid Quantity"
+            })
         }
     }catch{
         res.status('500').json({
@@ -74,7 +76,7 @@ exports.updateQuantity = async(req,res)=>{
 
 exports.deleteCartItem=async (req,res)=>{
     let {productId} = req.body
-    console.log(productId)
+
     try{
         await User.findOneAndUpdate({ _id:res.locals.userId },{ $pull: { cart: { productId:productId } } }, { safe:true,multi:true })
         res.status('203').json({
