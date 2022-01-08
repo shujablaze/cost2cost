@@ -1,0 +1,112 @@
+extends base
+
+block content 
+
+  section.order__details
+
+    .order__container
+      .order__items
+        each product in data.items
+          .order__item 
+            img.order__item--img(src=`/img/${product.productId.img}`,alt=`${product.productId.title}`)
+            .order__item--title=`${product.productId.title}`
+            .order__details--quantity=`x ${product.quantity}`
+            a.order__details--link(href=`/categories/${product.productId.category}/${product.productId._id}`) View
+
+      .cart__billing-bar
+        .bill__heading  Order Details 
+              .bill__row
+                  .bill__buyer--title Name: 
+                  .bill__buyer--name=data.buyerName 
+              .bill__row 
+                  .bill__buyer--title Phone: 
+                  .bill__buyer--phone=data.phoneNo 
+              .bill__row 
+                  .bill__buyer--title Address: 
+                  .bill__buyer--address=data.address
+              .bill__row.bill__total 
+                  .bill__buyer--title Total: 
+                  .bill__buyer--total=`Rs. ${data.amount}`
+              
+              .bill__row 
+                .bill__buyer--title Order Date:  
+                .bill__buyer--date=data.orderDate
+              
+              if data.status === 'delivered'
+                .bill__row 
+                  .bill__buyer--title Delivery Date: 
+                  .bill__buyer--date=data.deliveryDate
+
+              
+              if data.status === 'active'
+                .bill__row.button__row
+                  if admin 
+                    button(id="mark-delivered-button" data-id = data._id).order__button--normal.order__button Mark Delivered 
+                  button(id="cancel-order-button" data-id = data._id).order__button--delete.order__button Cancel Order
+              
+
+  if admin && data.status === 'active'
+    script(defer).
+      
+      const cancelButton = document.getElementById('cancel-order-button');
+      const deliveredBtn = document.getElementById('mark-delivered-button');
+
+      const orderId = cancelButton.dataset.id
+
+      cancelButton.addEventListener('click',()=>{
+        axios({
+                url : 'http://localhost:3000/admin/orders/order',
+                method : 'DELETE',
+                data : {orderId}
+            })
+            .then(res=>{
+                if(res.data.status === 'ok'){
+                    alert('Order Cancelled')
+                }
+                location.reload()
+            })
+            .catch(err=>{
+                alert(err.response.data.message)
+            })
+      })
+
+      deliveredBtn.addEventListener('click',()=>{
+        axios({
+                url : 'http://localhost:3000/admin/orders/order',
+                method : 'PATCH',
+                data : {orderId}
+            })
+            .then(res=>{
+                if(res.data.status === 'ok'){
+                    alert('Order Delivered')
+                }
+                location.reload()
+            })
+            .catch(err=>{
+                alert(err.response.data.message)
+            })
+      })
+
+  if !admin && data.status === 'active'
+    script(defer).
+      
+      const cancelButton = document.getElementById('cancel-order-button');
+
+      const orderId = cancelButton.dataset.id
+
+      cancelButton.addEventListener('click',()=>{
+        axios({
+                url : `http://localhost:3000/orders/order/${orderId}`,
+                method : 'DELETE',
+                data : {orderId}
+            })
+            .then(res=>{
+                if(res.data.status === 'ok'){
+                    alert('Order Cancelled')
+                }
+                location.reload()
+            })
+            .catch(err=>{
+                alert(err.response.data.message)
+            })
+      }) 

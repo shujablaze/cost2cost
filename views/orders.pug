@@ -1,0 +1,22 @@
+extends base
+
+block content 
+
+  h4 orders   
+  section.order   
+    each order in data 
+      -
+        let statusClass
+        if (order.status === 'active'){
+            statusClass = 'active'
+        }else if(order.status === 'cancelled'){
+            statusClass = 'cancelled'
+        }else{
+            statusClass = 'delivered'
+        }
+      a(href=`/orders/order/${order._id}`).order-container
+        .order__title=order.title 
+        .order__status Status: 
+          span(class=`order__${statusClass}`)=order.status
+        .order__total=`Rs.${order.amount}`
+           

@@ -1,11 +1,11 @@
-const User = require('../models/User');
-const { getItem } = require('./productController') 
+const User = require('../models/User')
+const Product = require('../models/Product')
 
 exports.updateCart = async (req,res)=>{
 
     const {productId,productCategory} = req.body
     
-    const allowedCategories = ['gamingchairs','cpu','ram','gpu','motherboard','pc','accessories']
+    const allowedCategories = ['chair','cpu','ram','gpu','motherboard','pc','accessories']
 
     if(allowedCategories.indexOf(productCategory)===-1){
         console.log('INVALID CATEGORY RECEIVED AT '+ new Date().toLocaleString())
@@ -36,7 +36,7 @@ exports.displayCart = async (req,res)=>{
 
             const { productId,category,quantity } = item
 
-            const { _id, title, img, discountprice } = await getItem(category,productId);
+            const { _id, title, img, discountprice } = await Product.findById(productId);
 
             const price = Math.round(discountprice * quantity * 100)/100
             
@@ -47,7 +47,7 @@ exports.displayCart = async (req,res)=>{
 
         data = await Promise.all(data)
 
-        res.render('cart',{data})
+        res.render('cart',{data,user})
     }
 }
 

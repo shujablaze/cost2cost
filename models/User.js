@@ -14,6 +14,21 @@ const userSchema = new mongoose.Schema({
         unique:true,
         validate:[validator.isEmail,'Invalid Email']
     },
+    address:{
+        type:String,
+        maxLength:150,
+        default:''
+    },
+    phoneNo : {
+        type:Number,
+        maxLength:12,
+        minlength:10,
+        default:null
+    },
+    accountType:{
+        type:String,
+        default : 'standard'
+    },
     password:{
         type:String,
         required:[true,'Please provide password'],
@@ -30,19 +45,23 @@ const userSchema = new mongoose.Schema({
             message:'Passwords does not match'
         }
     },
+    passwordModifiedAt:Date,
+    profileStatus:{
+        type:String,
+        default:'incomplete'
+    },
     cart:[{
             _id:false,
             productId:{
                 type:mongoose.Schema.ObjectId,
-                unique:true
             },
             category:String,
             quantity:Number,
         }]
 },
 {
-    toObject:{virtauls:true},
-    toJSON:{virtauls:true}
+    toObject:{virtuals:true},
+    toJSON:{virtuals:true}
 })
 
 userSchema.pre('save', async function(next){
@@ -51,6 +70,21 @@ userSchema.pre('save', async function(next){
     this.passwordConfirm = undefined
     next()
 })
+
+userSchema.pre('save', async function(next){
+    if(!this.isModified('password')) return next();
+
+    this.passwordModifiedAt = Date.now() - 5000
+    next()
+})
+
+userSchema.methods.hasChangedPasswordAfter = function(time){
+    if(this.passwordModifiedAt ){
+        const timeStamp = this.passwordModifiedAt.getTime() / 1000
+        return timeStamp > time
+    }
+    return false
+}
 
 //Create models after instance methods and querymiddlewares
 const User = mongoose.model('User',userSchema)

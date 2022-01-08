@@ -3,8 +3,6 @@ nav.nav-bar
       | cost2cost
     .navlink
         a.navlink__tag(href='/') HOME
-    .navlink
-        a.navlink__tag(href='#') Self-built
     .navlink.toggle-submenu
         a.navlink__tag Internals
         .submenu-internals
@@ -24,8 +22,13 @@ nav.nav-bar
             a.navlink__tag=username
             .submenu-internals
                 ul
-                    li
-                        a.navlink__tag(href='/users/profile') Profile
+                    if !admin
+                        li
+                            a.navlink__tag(href='/users/profile') Profile
+                    else 
+                        li
+                            a.navlink__tag(href='/users/profile') Admin
+                
                     li
                         a.navlink__tag(href='/users/logout') Logout
     else

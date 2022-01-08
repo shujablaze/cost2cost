@@ -7,6 +7,8 @@ const productController=require('./controllers/productController');
 const {checkLoginStatus,protectedRoute}=require('./controllers/authController');
 const userRouter=require('./routes/userRoutes');
 const cartRouter=require('./routes/cartRoutes');
+const adminRouter = require('./routes/adminRoutes')
+const orderRouter = require('./routes/orderRoutes')
 const app = express();
 
 // Parse req body to json 
@@ -27,15 +29,30 @@ app.use(express.static(path.join(__dirname,'/public')));
 app.use(checkLoginStatus);
 
 app.use('/users',userRouter);
+
+app.use('/admin',adminRouter)
+
 app.use('/cart',protectedRoute,cartRouter);
+
+app.use('/orders',protectedRoute,orderRouter)
 
 app.get('/',(req,res)=>res.render('index'))
 
-app.get('/categories/:category',productController.getProducts);
+app.get('/categories/:category',productController.getCategoryProducts);
 
-app.get('/categories/:category/:id',productController.getProducts);
+app.get('/categories/:category/:id',productController.getProduct);
 
 app.get('/:name',pcController.getpc);
+
+const errorHandler = (err,req,res,next) => {
+
+    res.status('500').json({
+        status:'error',
+        message:err.message
+    })
+}
+
+app.use(errorHandler)
 
 module.exports = app;
 

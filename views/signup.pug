@@ -3,7 +3,7 @@ extends base
 block content 
     .container--signup
         h4 SIGN UP 
-        form(method="POST" id="signup-form")
+        form(method="POST" id="signup-form").sign_form
             .form__field
                 label.form__label(for="name" ) Name 
                 input.input__field(type="text" name="name" id="name" placeholder="Name" required)

@@ -5,3 +5,37 @@
     row-gap: 6vw;
     min-height: 100vh;
 }
+
+.main{
+    padding: 5rem;
+    padding-top: 8vh;
+    min-height: 95vh;
+    @media only screen and (max-width:$bigphn-brk){
+        padding:1.5rem ;
+        padding-top: 8vh;
+    }
+}
+
+.main p{
+    font-size: 2.5rem;
+    padding:1.5rem 5rem;
+    text-transform: capitalize;
+    line-height: 1.5;
+    margin-bottom: 5rem;
+    color:rgb(68, 68, 68);
+    
+    @media only screen and (max-width:$bigphn-brk){
+        font-size: 1.5rem;
+        padding:1rem 0.25rem;
+    }
+
+}
+
+.main h4{
+    font-size: 4rem;
+    margin-bottom: 2.5rem;
+    color:rgb(60, 31, 128);
+    margin-top: 3.5rem;
+    font-family: 'Monoton',cursive;
+}
+

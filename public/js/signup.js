@@ -20,8 +20,11 @@ const handleSignUp = (e)=>{
             passwordConfirm:passwordConfirm
         }
     })
-    .then(()=>window.location.assign('/users/login'))
-    .catch(err=>error_area.innerHTML="Couldnt Sign Up")
+    .then(()=>window.location.assign('/users/profile/info'))
+    .catch(err=>{
+        error_area.innerHTML="Couldnt Sign Up"
+        alert(err.response.data.message)
+    })
 }
 
 form.addEventListener('submit',handleSignUp)

@@ -22,19 +22,19 @@ block content
 
             .cart__billing-bar 
                 .bill__row
-                    .bill__buyer--title Name 
-                    .bill__buyer--name=username 
+                    .bill__buyer--title Name: 
+                    .bill__buyer--name=user.name 
                 .bill__row 
-                    .bill__buyer--title Phone 
-                    .bill__buyer--phone=9871653258
+                    .bill__buyer--title Phone: 
+                    .bill__buyer--phone=user.phoneNo
                 .bill__row 
-                    .bill__buyer--title Address 
-                    .bill__buyer--address Lorem ipsum dolor sit amet consectetur    adipisicing elit. Officia quibusdam, ipsam vitae at fugiat explicabo   impedit aperiam voluptatum consequatur dolorem.
+                    .bill__buyer--title Address: 
+                    .bill__buyer--address=user.address
                 .bill__row.bill__total 
-                    .bill__buyer--title Total 
+                    .bill__buyer--title Total: 
                     .bill__buyer--total=`Rs. ${total}`
                 .buyer_Btn 
-                    form.product__form(action="/checkout",method="POST")
+                    form.product__form(action="/orders/checkout",method="POST")
                       input(type="hidden", name="userId", value=`${userId}`)
                       Button.bill__buyer--btn Order
 

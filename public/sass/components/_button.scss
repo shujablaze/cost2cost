@@ -39,3 +39,46 @@
     }
 }
 
+.order__button{
+
+    &--delete{
+        cursor:pointer;
+        background: rgb(170, 51, 51);
+        border: none;
+        padding:1.75rem 2rem;
+        border-radius: 3px;;
+        color:white;
+    }
+    &--normal{
+        cursor:pointer;
+        background: rgb(37, 119, 30);
+        border: none;
+        padding:1.75rem 2rem;
+        border-radius: 3px;;
+        color:white;
+        
+    }
+}
+
+.buy-now__button{
+    cursor:pointer;
+    border: none;
+    padding:1rem 3.75rem;
+    border-radius: 3px;;
+    color:rgb(248, 248, 248);
+    font-size: 1.4rem;
+    background:rgb(94, 47, 204) /*lighten($primary-color,5)*/;
+
+    @media only screen and (min-width:$smalltab-brk){
+        &:hover{
+            transform: translateY(-1px);
+        }
+    }
+
+    @media only screen and (max-width:$smalltab-brk){
+        font-size: 1.7rem;
+        padding:1.25rem 4rem;
+    }
+    
+}
+

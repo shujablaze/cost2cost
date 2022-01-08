@@ -1,0 +1,51 @@
+extends base
+
+block content 
+    h4 personal info 
+    form(id="personal_info_form").info-form
+        .form__field
+          .form__label
+            label(for="name") Name
+          input(id="name" name="name" type="text" value=`${data.name}`).input__field
+        
+
+        .form__field
+          .form__label
+            label(for="phoneNo") Mobile No 
+          input(id="phoneNo" name="phoneNo" type="number" value=`${data.phoneNo}`).input__field
+
+
+        .form__field
+          .form__label
+            label(for="address") Address
+          textarea(id="address" name="address" ).form__field__textarea=`${data.address}`
+
+
+        .form__field.form__field--button 
+          input.submit__button(type="submit" id="product_form_btn" value="Submit" )
+
+    script(defer).
+        const form = document.getElementById('personal_info_form')
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault()
+            const data = {}
+
+            data["name"] = document.getElementById('name').value
+            data["phoneNo"] = document.getElementById('phoneNo').value
+            data["address"] = document.getElementById('address').value
+
+            axios({
+                url : 'http://localhost:3000/users/profile/info',
+                method : 'PATCH',
+                data : data
+            })
+            .then(res=>{
+                if(res.data.status === 'ok'){
+                    alert('Profile Updated')
+                }
+                location.reload()
+            })
+            .catch(err=>{
+                alert(err.response.data.message)
+            })
+        })

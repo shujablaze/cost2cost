@@ -1,0 +1,61 @@
+.order{
+
+    max-width:120rem;
+    margin: 5rem auto;
+
+    &-container{
+        width:100%;
+        display: block;
+        margin:1rem auto;
+        padding:1.75rem 2rem;
+        border: 1px solid rgb(194, 194, 194);
+        border-radius: 4px;
+    }
+
+    &__title{
+        text-transform: capitalize;
+        color:#333;
+        font-size: 1.6rem;
+        font-family: 'Lato','san-serif';
+        padding:0.5rem 1rem;
+        letter-spacing: 1px;
+        word-spacing: 4px;
+        line-height: 1.7;
+        text-decoration: underline;
+    }
+
+    &__status{
+        text-transform: capitalize;
+        font-size: 1.45rem;
+        color:rgb(56, 56, 56);
+        padding:0.5rem 1rem;
+    }
+
+    &__active{
+        color:rgb(58, 151, 58);
+        font-family: 'lato','sans-serif';
+        font-weight: bold;
+        font-size: 1.35rem;
+    }
+
+    &__cancelled{
+        color:rgb(165, 32, 32);
+        font-size: 1.35rem;
+    }
+
+    &__total{
+        font-size: 1.35rem;
+        color:rgb(36, 32, 32);
+        padding:0.5rem 1rem;
+    }
+}
+
+.button__row{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-around;
+}
+
+
+
+

@@ -1,0 +1,36 @@
+.profile_dashboard{
+    display: grid;
+    max-width: 100rem;
+    margin: 5rem auto;
+    padding:2rem;
+    gap: 5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 25rem 25rem;
+
+    @media only screen and (max-width:$bigphn-brk)
+    {
+        grid-template-columns: 100%;
+        grid-template-rows: 20rem 20rem 20rem 20rem;
+    }
+    &__card{
+        border:rgb(177, 177, 177) solid 1px;
+        border-radius: 1rem;
+        padding:3rem;
+        &__icon img{
+            max-width:20%;
+            max-height: 40%;
+        }
+
+        &__text{
+            text-align: center;
+            font-size: 1.7rem;
+            text-transform: uppercase;
+            color:#333;
+            font-family: 'Lato','Ariel';
+        }
+    }
+}
+
+
+
+

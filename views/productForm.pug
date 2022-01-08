@@ -1,0 +1,71 @@
+extends base
+
+block content 
+    h4 add product
+
+    form(id="product-create_form").product-form 
+        .form__field
+          .form__label
+            label(for="title") title 
+          input(id="title" name="title" type="text" placeholder="Enter product title").input__field
+        
+        .form__field
+          .form__label 
+            label(for="category").form__label category 
+          select(id="category" name="category").form__field__select
+            option(value="ram") Ram
+            option(value="chair") Chair 
+            option(value="cpu") CPU
+            option(value="motherboard") Motherboard
+            option(value="gpu") GPU
+            option(value="accessories") Accessories
+
+        .form__field
+          .form__label
+            label(for="originalprice") MSRP 
+          input(id="originalprice" name="originalprice" type="number" placeholder="Enter MSRP").input__field
+
+
+        .form__field
+          .form__label
+            label(for="discountprice") Selling Price 
+          input(id="discountprice" name="discountprice" type="number" placeholder="Enter selling price").input__field
+
+        .form__field
+          .form__label
+            label(for="description") Description 
+          textarea(id="description" name="description" placeholder="Enter product description").form__field__textarea
+
+        .form__field
+          .form__label
+            label(for="features") features 
+          textarea(id="features" name="features" placeholder="Enter product features").form__field__textarea
+        .form__field
+          .form__label
+            label(for="img") Image 
+          input(id="img" name="img" type="file" placeholder="Enter product title").form__field__select
+
+        .form__field.form__field--button 
+          input.submit__button(type="submit" id="product_form_btn" value="Submit" )
+
+    script(defer).
+        const form = document.getElementById('product-create_form')
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault()
+            const data = new FormData(e.target);
+
+            axios({
+                url : 'http://localhost:3000/admin/product',
+                method : 'POST',
+                headers : {'content-type' : 'multipart/form-data'},
+                data : data
+            })
+            .then(res=>{
+                if(res.data.status === 'ok'){
+                    alert('Product added')
+                }
+            })
+            .catch(err=>{
+                alert(err.response.data.message)
+            })
+        })

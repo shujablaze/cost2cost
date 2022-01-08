@@ -1,0 +1,59 @@
+extends base
+
+block content 
+
+    h4 add admin 
+
+    form(id="add_admin_form").info-form
+        .form__field
+          .form__label
+            label(for="name") Name
+          input(id="name" name="name" type="text" ).input__field
+
+        .form__field
+          .form__label
+            label(for="email") Email
+          input(id="email" name="email" type="email" ).input__field
+
+        .form__field
+          .form__label
+            label(for="password") Password
+          input(id="password" name="password" type="password" ).input__field
+
+        .form__field
+          .form__label
+            label(for="passwordConfirm") Retype Password
+          input(id="passwordConfirm" name="passwordConfirm" type="Password" ).input__field
+
+        .form__field.form__field--button 
+          input.submit__button(type="submit" id="product_form_btn" value="Submit" )
+
+    script(defer).
+        const form = document.getElementById('add_admin_form')
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault()
+            const data = {}
+
+            data["name"] = document.getElementById('name').value
+            data["email"] = document.getElementById('email').value
+            data["password"] = document.getElementById('password').value
+            data["passwordConfirm"] = document.getElementById('passwordConfirm').value
+
+            axios({
+                url : 'http://localhost:3000/admin/users',
+                method : 'POST',
+                data : data
+            })
+            .then(res=>{
+                if(res.data.status === 'ok'){
+                    alert('Admin Added')
+                }
+                location.reload()
+            })
+            .catch(err=>{
+                alert(err.response.data.message)
+            })
+        })
+
+
+    
