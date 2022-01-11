@@ -1,8 +1,10 @@
 const Pc = require('../models/Pc');
 
-const createPc = async (req,res,next) => {
+exports.createPc = async (req,res,next) => {
     try{
-        const pc = await Pc.create(req.body)
+        const data = req.body
+        data.img = req.file.filename
+        const pc = await Pc.create(data)
 
         res.status('201').json({
             status : 'ok',
@@ -30,5 +32,7 @@ exports.getpc = async (req,res)=>{
     }
     res.status(200).render('pcdetails',{data:{name:'BIG ERROR'}});
 }
+
+
 
 

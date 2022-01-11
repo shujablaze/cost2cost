@@ -5,7 +5,7 @@ block content
     p=`${data.description}`
     .pc-card
         .pcdetails__image
-            img(src=`img/${data.img}`)
+            img(src=`/img/${data.img}`)
         .pcdetails__text 
             .pcdetails__text-field.pcdetails__text--highlight 
                 .pcdetails__text-field--title Processor 
@@ -34,7 +34,7 @@ block content
                 form.product__form(action="/cart",method="POST")
                     input(type="hidden", name="productCategory",value="pc")
                     input(type="hidden", name="productId", value=`${data._id}`)
-                    input.product__btn.btn-blk(type="submit", value=`+ ${data.discountprice}`)
+                    input.buy-now__button(type="submit", value=`+ ${data.discountprice}`)
                 
             
         

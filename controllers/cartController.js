@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const Product = require('../models/Product')
+const Pc = require('../models/Pc')
 
 exports.updateCart = async (req,res)=>{
 
@@ -36,13 +37,12 @@ exports.displayCart = async (req,res)=>{
 
             const { productId,category,quantity } = item
 
-            const { _id, title, img, discountprice } = await Product.findById(productId);
-
+            const { _id, title, img, discountprice } = await Pc.findById(productId);
             const price = Math.round(discountprice * quantity * 100)/100
-            
+        
             const displayItem = { _id,category,title,img,price,quantity }
-
             return displayItem
+            
         })
 
         data = await Promise.all(data)

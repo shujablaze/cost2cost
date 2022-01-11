@@ -1,5 +1,6 @@
 const express = require('express')
 const productController = require('../controllers/productController')
+const pcController = require('../controllers/pcController')
 const authController = require('../controllers/authController')
 const adminController = require('../controllers/adminController')
 const orderController = require('../controllers/orderController')
@@ -12,6 +13,11 @@ router
     .post(productController.upload.single('img'),productController.createProduct)
     .patch(productController.updateProduct)
     .delete(productController.deleteProduct)
+
+router
+    .route('/product/pc')
+    .get((req,res)=>res.render('pcForm'))
+    .post(productController.upload.single('img'),pcController.createPc)
 
 router
     .route('/users')

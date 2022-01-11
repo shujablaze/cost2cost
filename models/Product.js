@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
     },
     features:{
         type:String,
-        required:[true,"Please provide features"]
+        default:'No features listed'
     },
     img:String,
     discountprice:{
@@ -26,7 +26,7 @@ const productSchema = new mongoose.Schema({
         type:Number,
         required:[true,"Please provide selling price"]
     },
-});
+},{ discriminatorKey: 'kind' });
 
 const Product = mongoose.model('Product',productSchema)
 

@@ -27,8 +27,8 @@ block content
               img(src='/icons/policy.png')
             .profile_dashboard__card__text Privacy Policy
     else
-        section.profile_dashboard 
-          a(href="/admin/orders").profile_dashboard__card
+        section.profile_dashboard
+          a(href="/admin/orders" ).profile_dashboard__card
             .profile_dashboard__card__icon 
               img(src='/icons/orders.png')
             .profile_dashboard__card__text Orders
@@ -47,3 +47,8 @@ block content
             .profile_dashboard__card__icon 
               img(src='/icons/add_product.png')
             .profile_dashboard__card__text Add Product
+
+          a(href="/admin/product/pc" style={height:'20rem'}).profile_dashboard__card
+            .profile_dashboard__card__icon 
+              img(src='/icons/add_product.png')
+            .profile_dashboard__card__text Add Prebuilts 

@@ -7,19 +7,44 @@ block content
         .form__field
           .form__label
             label(for="title") title 
-          input(id="title" name="title" type="text" placeholder="Enter product title").input__field
+          input(id="title" name="title" type="text" placeholder="Enter title").input__field
         
         .form__field
-          .form__label 
-            label(for="category").form__label category 
-          select(id="category" name="category").form__field__select
-            option(value="ram") Ram
-            option(value="chair") Chair 
-            option(value="cpu") CPU
-            option(value="motherboard") Motherboard
-            option(value="gpu") GPU
-            option(value="accessories") Accessories
-          
+          .form__label
+            label(for="processor") Processor
+          input(id="processor" name="processor" type="text" placeholder="Enter processor").input__field
+        
+        .form__field
+          .form__label
+            label(for="storage") Storage
+          input(id="storage" name="storage" type="text" placeholder="Enter storage").input__field
+        
+        .form__field
+          .form__label
+            label(for="gpu") Gpu 
+          input(id="gpu" name="gpu" type="text" placeholder="Enter gpu").input__field
+        
+        .form__field
+          .form__label
+            label(for="motherboard") Motherboard 
+          input(id="motherboard" name="motherboard" type="text" placeholder="Enter motherboard").input__field
+        
+        .form__field
+          .form__label
+            label(for="ram") Ram 
+          input(id="ram" name="ram" type="text" placeholder="Enter Ram").input__field
+
+        .form__field
+          .form__label
+            label(for="powersupply") Powersupply 
+          input(id="powersupply" name="powersupply" type="text" placeholder="Enter powersupply").input__field
+        
+        .form__field
+          .form__label
+            label(for="dimensions") Dimensions 
+          input(id="dimensions" name="dimensions" type="text" placeholder="Enter dimensions").input__field
+        
+        
         .form__field
           .form__label
             label(for="originalprice") MSRP 
@@ -38,8 +63,9 @@ block content
 
         .form__field
           .form__label
-            label(for="features") features 
-          textarea(id="features" name="features" placeholder="Enter product features").form__field__textarea
+          input(type='hidden' name="category" value='pc')
+
+    
         .form__field
           .form__label
             label(for="img") Image 
@@ -55,7 +81,7 @@ block content
             const data = new FormData(e.target);
 
             axios({
-                url : 'http://localhost:3000/admin/product',
+                url : 'http://localhost:3000/admin/product/pc',
                 method : 'POST',
                 headers : {'content-type' : 'multipart/form-data'},
                 data : data
