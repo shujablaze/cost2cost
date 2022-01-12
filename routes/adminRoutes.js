@@ -11,7 +11,7 @@ router
     .route('/product')
     .get((req,res)=>res.render('productForm'))
     .post(productController.upload.single('img'),productController.createProduct)
-    .patch(productController.updateProduct)
+    .patch(productController.upload.none(),productController.updateProduct)
     .delete(productController.deleteProduct)
 
 router

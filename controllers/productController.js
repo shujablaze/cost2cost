@@ -83,8 +83,9 @@ exports.getProduct = async (req,res,next) => {
 
 exports.updateProduct = async (req,res,next) => {
     try{
-        const {id} = req.body
-        const {data} = req.body
+        const data = req.body
+        const {id} = data
+        delete data.id
 
         const updatedProduct = await Product.findByIdAndUpdate(id,data,{new : true})
 

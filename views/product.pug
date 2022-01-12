@@ -1,6 +1,7 @@
 extends base
 
 block content
+  if !admin
     .product-card
         .product__image
           img(src=`/img/${data.img}`)
@@ -41,4 +42,76 @@ block content
     .product__info
       .heading-3 Features
       .product__features=data.features
-    
+  else
+    form(id="admin-product-form")
+      .product-card
+          .product__image
+            img(src=`/img/${data.img}`)
+          .product__details
+            input(type="hidden", name="id", value=`${data._id}`)
+            .form__field
+              .form__label
+                label(for="title") title 
+              input(id="title" name="title" type="text" value=`${data.title}`).input__field
+
+            .form__field
+              .form__label
+                label(for="discountprice") price 
+              input(id="discountprice" name="discountprice" type="number" value=`${data.discountprice}`).input__field
+
+            .product__field
+              .bill__row.button__row
+                input.order__button--normal.order__button(id="update-product-button" type="submit" value="Save Changes")
+                button(id="delete-product-button" data-id = data._id).order__button--delete.order__button Delete Product
+              
+      .product__info 
+        .heading-3 Description     
+        .product__description 
+          textarea(id="description" name="description" ).form__field__textarea=data.description
+
+      .product__info
+        .heading-3 Features
+        .product__features 
+          textarea(id="features" name="features" ).form__field__textarea=data.features
+  
+    script(defer).
+        const form = document.querySelector('#admin-product-form')
+        form.addEventListener('submit',(e)=>{
+          e.preventDefault()
+          const data = new FormData(e.target);
+            
+            axios({
+                url : 'http://localhost:3000/admin/product',
+                method : 'PATCH',
+                headers : {'content-type' : 'multipart/form-data'},
+                data : data
+            })
+            .then(res=>{
+                if(res.data.status === 'ok'){
+                    alert('Product Updated')
+                }
+            })
+            .catch(err=>{
+                alert(err.response.data.message)
+            })
+
+        })
+
+      const deleteButton = document.getElementById('delete-product-button');
+      const id = deleteButton.dataset.id
+
+      deleteButton.addEventListener('click',(e)=>{
+        e.preventDefault()
+        axios({
+                url : 'http://localhost:3000/admin/product',
+                method : 'DELETE',
+                data : {id}
+            })
+            .then(res=>{
+                  window.location.assign('/categories/#{data.category}')
+                  alert('Product Removed')
+            })
+            .catch(err=>{
+                alert(err.response.data.message)
+            })
+      })
