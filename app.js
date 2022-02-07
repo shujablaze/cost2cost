@@ -4,7 +4,7 @@ const cookieParser=require('cookie-parser')
 
 const pcController=require('./controllers/pcController');
 const productController=require('./controllers/productController');
-const {checkLoginStatus,protectedRoute}=require('./controllers/authController');
+const {checkLoginStatus,protectedRoute,restrictedRoute}=require('./controllers/authController');
 const userRouter=require('./routes/userRoutes');
 const cartRouter=require('./routes/cartRoutes');
 const adminRouter = require('./routes/adminRoutes')
@@ -30,7 +30,7 @@ app.use(checkLoginStatus);
 
 app.use('/users',userRouter);
 
-app.use('/admin',adminRouter)
+app.use('/admin',restrictedRoute,adminRouter)
 
 app.use('/cart',protectedRoute,cartRouter);
 
@@ -43,6 +43,8 @@ app.get('/categories/:category',productController.getCategoryProducts);
 app.get('/categories/:category/:id',productController.getProduct);
 
 app.get('/:name',pcController.getpc);
+
+app.get('/*',(req,res)=>{res.render('404page')})
 
 const errorHandler = (err,req,res,next) => {
 

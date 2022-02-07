@@ -141,6 +141,32 @@ exports.protectedRoute = async (req,res,next)=>{
     res.redirect('/users/login')
 }
 
+exports.restrictedRoute = async (req,res,next) => {
+    if(req.cookies.jwt){
+        try{
+            const decoded = await promisify(jwt.verify)(req.cookies.jwt,process.env.JWT_SECRET)
+
+            const user = await User.findById(decoded.id)
+
+            if(!user) return res.redirect('/users/login')
+
+            if(user.hasChangedPasswordAfter(decoded.iat)) res.redirect('/users/login')
+            
+            if(user.accountType !== 'admin'){
+                res.send('<h1>Not Authorized</h1>')
+                return
+            }
+
+            //Allowing access
+            return next()
+        }
+        catch{
+            return res.redirect('/users/login')
+        }
+    }
+    res.redirect('/users/login')
+}
+
 exports.logoutUser = (req,res)=>{
     res.cookie('jwt',"",{maxAge:50000})
     res.redirect('/')

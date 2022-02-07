@@ -310,12 +310,14 @@ h4 {
 
 .pc-picture {
   width: 50%;
+  transition: opacity 1s;
   text-align: center; }
   .pc-picture img {
     max-width: 90%; }
   @media only screen and (max-width: 48.75em) {
     .pc-picture {
       width: 100%;
+      transition: opacity 1s;
       text-align: center; }
       .pc-picture img {
         max-width: 60%; } }
@@ -333,6 +335,7 @@ h4 {
 .pc-text {
   display: grid;
   grid-template-rows: min-content 1fr 2fr 1fr;
+  transition: opacity 1s;
   row-gap: 1rem; }
 
 .tr-btn {
@@ -1002,3 +1005,7 @@ a {
   display: flex;
   margin-top: 2rem;
   justify-content: space-around; }
+
+.hidden-pc{
+  opacity:0;
+}

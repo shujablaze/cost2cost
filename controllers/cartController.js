@@ -37,7 +37,7 @@ exports.displayCart = async (req,res)=>{
 
             const { productId,category,quantity } = item
 
-            const { _id, title, img, discountprice } = await Pc.findById(productId);
+            const { _id, title, img, discountprice } = await Product.findById(productId);
             const price = Math.round(discountprice * quantity * 100)/100
         
             const displayItem = { _id,category,title,img,price,quantity }
@@ -51,7 +51,7 @@ exports.displayCart = async (req,res)=>{
     }
 }
 
-exports.updateQuantity = async(req,res)=>{
+exports.updateQuantity = async(req,res,next)=>{
     const {productId,quantity} = req.body
 
     try{
@@ -62,15 +62,10 @@ exports.updateQuantity = async(req,res)=>{
                 status:'ok'
             })        
         }else{
-            res.status('400').json({
-                status:'fail',
-                message:"Invalid Quantity"
-            })
+            next(new Error('Invalid Quantity (only 1-9 allowed)'))
         }
     }catch{
-        res.status('500').json({
-            status:'fail'
-        })
+        next(new Error('Internal Server Error please try again after sometime'))
     }
 }
 

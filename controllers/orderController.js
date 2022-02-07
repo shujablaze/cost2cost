@@ -17,7 +17,7 @@ const createOrderObject = async(user) =>{
     //Calculating Order total
     for (const product of order["items"]){
         const item = await Product.findById(product.productId)
-        order.amount += item.discountprice
+        order.amount += (item.discountprice * product.quantity)
         //eg 1xram, 
         order.title += `${product.quantity} x ${item.title}, `
     }
@@ -105,8 +105,6 @@ exports.markOrderDelivered = async(req,res,next) => {
         const {orderId} = req.body
 
         const order = await Order.findById(orderId)
-
-        console.log(req.body)
 
         if(!order.status === 'active'){
             return next(new Error(`Order has been ${order.status}`))

@@ -30,7 +30,7 @@ exports.getpc = async (req,res)=>{
         res.status(200).render('pcdetails',{data:data});
         return
     }
-    res.status(200).render('pcdetails',{data:{name:'BIG ERROR'}});
+    res.status(200).render('404page');
 }
 
 
